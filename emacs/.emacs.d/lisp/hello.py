@@ -1,0 +1,2 @@
+def salut():
+    var = toto
