@@ -1,4 +1,4 @@
-(require 'yaml-mode)
+(require 'yaml-mode) 
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (require 'dockerfile-mode)
@@ -21,38 +21,29 @@
 
 (setq-default indent-tabs-mode nil)
 (require 'whitespace)
-                                        ; make carriage returns blue and tabs green
+;; make carriage returns blue and tabs green
 (custom-set-faces
  '(my-carriage-return-face ((((class color)) (:background "blue"))) t)
  '(my-tab-face ((((class color)) (:background "green"))) t)
  )
-                                        ; add custom font locks to all buffers and all files
-(add-hook
- 'font-lock-mode-hook
- (function
-  (lambda ()
-    (setq
-     font-lock-keywords
-     (append
-      font-lock-keywords
-      '(
-        ("\r" (0 'my-carriage-return-face t))
-        ("\t" (0 'my-tab-face t))
-        ))))))
 
-                                        ; make characters after column 80 purple
+; make characters after column 80 purple
 (setq whitespace-style
       (quote (face trailing tab-mark lines-tail)))
 (add-hook 'find-file-hook 'whitespace-mode)
 
-; transform literal tabs into a right-pointing triangle
-;; (setq
-;;  whitespace-display-mappings ;http://ergoemacs.org/emacs/whitespace-mode.html
-;;  '(
-;;    (tab-mark 9 [9654 9] [92 9])
-;;                                         ;others substitutions...
-;;       ))
 
 (setq mouse-wheel-progressive-speed nil)
 (setq scroll-step 1)
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
+
+(global-linum-mode 1)
+(setq linum-format "%4d \u2502 ")
+
+(add-hook 'c-mode-common-hook
+  (lambda()
+    (local-set-key (kbd "C-c <right>") 'hs-show-block)
+    (local-set-key (kbd "C-c <left>")  'hs-hide-block)
+    (local-set-key (kbd "C-c <up>")    'hs-hide-all)
+    (local-set-key (kbd "C-c <down>")  'hs-show-all)
+    (hs-minor-mode t)))
