@@ -21,6 +21,11 @@
       (quote (face trailing lines-tail)))
 (add-hook 'find-file-hook 'whitespace-mode)
 
+;; Replace line above by these to display tabulations
+;; (setq whitespace-style
+;;       (quote (face trailing tab-mark lines-tail)))
+;; (add-hook 'find-file-hook 'whitespace-mode)
+
 ;; scroll only one line at once
 (setq mouse-wheel-progressive-speed nil)
 (setq scroll-step 1)
