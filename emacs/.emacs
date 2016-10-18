@@ -1,11 +1,13 @@
+(add-to-list 'load-path "~/.emacs.d/lisp")
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
-(add-to-list 'load-path "~/.emacs.d/lisp")
 (require 'dockerfile-mode)
 (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
 (require 'adoc-mode)
 (add-to-list 'auto-mode-alist '("\\.adoc\\'" . adoc-mode))
 
+(require 'rst)
+(add-to-list 'auto-mode-alist '("\\.rst\\'" . rst))
 ;; start auto-complete with emacs
 (require 'auto-complete)
 ;; do default config for auto-complete
@@ -21,10 +23,16 @@
       (quote (face trailing lines-tail)))
 (add-hook 'find-file-hook 'whitespace-mode)
 
-;; Replace line above by these to display tabulations
+;; Replace the lines above by these to display tabulations
+;; (require 'whitespace)
 ;; (setq whitespace-style
 ;;       (quote (face trailing tab-mark lines-tail)))
 ;; (add-hook 'find-file-hook 'whitespace-mode)
+
+;; Disable parenthese highlighting delay
+(setq show-paren-delay 0)
+;; Highlight matching (), {}, and []
+(show-paren-mode 1)
 
 ;; scroll only one line at once
 (setq mouse-wheel-progressive-speed nil)
