@@ -14,6 +14,15 @@
 (require 'auto-complete-config)
 (ac-config-default)
 
+
+;; these are Epitech header configuration files
+(setq emacs-lisp-dir "~/.emacs.d/"
+      my-elmode-dir (concat emacs-lisp-dir "elmodes/"))
+(setq load-path
+      (append load-path (list my-elmode-dir)))
+(load "std.el")
+(load "std_comment.el")
+
 ;; no tab indent
 (setq-default indent-tabs-mode nil)
 
