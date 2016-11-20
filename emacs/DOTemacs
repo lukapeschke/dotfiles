@@ -1,0 +1,77 @@
+(add-to-list 'load-path "~/.emacs.d/lisp")
+
+;; nice color theme, please export TERM=xterm-256color
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+(load-theme 'tangotango t)
+
+;; keep the original background color, ie. transparent terminal
+(defun on-after-init ()
+  (unless (display-graphic-p (selected-frame))
+    (set-face-background 'default "unspecified-bg" (selected-frame))))
+(add-hook 'window-setup-hook 'on-after-init)
+
+;; Asciidoc, yaml, Dockerfile and .rst support
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+(require 'dockerfile-mode)
+(add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
+(require 'adoc-mode)
+(add-to-list 'auto-mode-alist '("\\.adoc\\'" . adoc-mode))
+(require 'rst)
+(add-to-list 'auto-mode-alist '("\\.rst\\'" . rst))
+
+;; matching {} [] () in the same color
+(require 'rainbow-delimiters)
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+
+;; automatically make pairs for (), [] and {}, and automatically
+;; delete pairs
+(electric-pair-mode 1)
+
+;; Highlight matching (), {}, and []
+(show-paren-mode 1)
+
+
+;; Autocompletion
+(require 'auto-complete)
+(require 'auto-complete-config)
+(ac-config-default)
+
+;; these are Epitech header configuration files
+(setq emacs-lisp-dir "~/.emacs.d/"
+      my-elmode-dir (concat emacs-lisp-dir "elmodes/"))
+(setq load-path
+      (append load-path (list my-elmode-dir)))
+(load "std.el")
+(load "std_comment.el")
+
+;; Uncomment this lines to get a spaces-only indentation
+;; (setq-default indent-tabs-mode nil)
+
+;; Make characters after column 80 purple and trailing spaces red
+;; This also show tabulations, delete 'tab-mark' from the lines below to
+;; cancel this
+
+(require 'whitespace)
+(setq whitespace-style
+      (quote (face trailing tab-mark lines-tail)))
+(add-hook 'find-file-hook 'whitespace-mode)
+
+;; scroll only one line at once
+(setq mouse-wheel-progressive-speed nil)
+(setq scroll-step 1)
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
+
+;;uncomment to display line numbers
+;; (global-linum-mode 1)
+;; (setq linum-format "%4d \u2502 ")
+
+
+;; keybindings to toggle functions, use CTRL and arrow keys
+(add-hook 'prog-mode-hook
+  (lambda()
+    (local-set-key (kbd "C-<right>") 'hs-show-block)
+    (local-set-key (kbd "C-<left>")  'hs-hide-block)
+    (local-set-key (kbd "C-<up>")    'hs-hide-all)
+    (local-set-key (kbd "C-<down>")  'hs-show-all)
+    (hs-minor-mode t)))
