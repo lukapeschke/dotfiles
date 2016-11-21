@@ -10,7 +10,7 @@
     (set-face-background 'default "unspecified-bg" (selected-frame))))
 (add-hook 'window-setup-hook 'on-after-init)
 
-;; Asciidoc, yaml, Dockerfile and .rst support
+;; Asciidoc, yaml, Dockerfile, jinja2 and .rst support
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 (require 'dockerfile-mode)
@@ -19,6 +19,8 @@
 (add-to-list 'auto-mode-alist '("\\.adoc\\'" . adoc-mode))
 (require 'rst)
 (add-to-list 'auto-mode-alist '("\\.rst\\'" . rst))
+(require 'jinja2-mode)
+(add-to-list 'auto-mode-alist '("\\.j2\\'" . jinja2-mode))
 
 ;; matching {} [] () in the same color
 (require 'rainbow-delimiters)
