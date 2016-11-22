@@ -72,8 +72,8 @@
 ;; keybindings to toggle functions, use CTRL and arrow keys
 (add-hook 'prog-mode-hook
   (lambda()
-    (local-set-key (kbd "C-<right>") 'hs-show-block)
-    (local-set-key (kbd "C-<left>")  'hs-hide-block)
-    (local-set-key (kbd "C-<up>")    'hs-hide-all)
-    (local-set-key (kbd "C-<down>")  'hs-show-all)
+    (local-set-key (kbd "C-c <right>") 'hs-show-block)
+    (local-set-key (kbd "C-c <left>")  'hs-hide-block)
+    (local-set-key (kbd "C-c <up>")    'hs-hide-all)
+    (local-set-key (kbd "C-c <down>")  'hs-show-all)
     (hs-minor-mode t)))
