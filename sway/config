@@ -25,6 +25,8 @@ set $menu dmenu_run
 
 gaps inner 4 outer 0
 
+new_window none
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/sway/)
@@ -215,4 +217,5 @@ bar {
     }
 }
 
+exec --no-startup-id /usr/bin/dunst
 include /etc/sway/config.d/*
