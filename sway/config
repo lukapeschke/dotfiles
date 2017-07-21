@@ -64,6 +64,15 @@ output * bg /usr/share/backgrounds/f26/default/normalish/f26.png fill
     # start your launcher
     bindsym $mod+d exec $menu
 
+    # Sound
+    bindsym XF86AudioLowerVolume exec amixer sset Master 5%-
+    bindsym XF86AudioRaiseVolume exec amixer sset Master 5%+
+    bindsym XF86AudioMute exec amixer sset Master toggle
+
+    # Brightness
+    bindsym XF86MonBrightnessUp exec brightnessctl s 5%+
+    bindsym XF86MonBrightnessDown exec brightnessctl s 5%-
+
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
     # Despite the name, also works for non-floating windows.
@@ -103,6 +112,9 @@ output * bg /usr/share/backgrounds/f26/default/normalish/f26.png fill
 #
 # Workspaces:
 #
+    bindsym ctrl+$alt+left workspace prev
+    bindsym ctrl+$alt+right workspace next
+
     # switch to workspace
     bindsym $mod+1 workspace 1
     bindsym $mod+2 workspace 2
@@ -194,6 +206,7 @@ bindsym $mod+r mode "resize"
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
+    status_command i3blocks
     position top
     colors {
         statusline #ffffff
