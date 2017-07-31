@@ -4,7 +4,7 @@ separator_block_width=14
 
 command=/usr/local/libexec/i3blocks/battery BAT0
 
-interval=30
+interval=5
 
 
 [disk-root]
@@ -30,6 +30,6 @@ color=#ffa500
 
 [time]
 label=
-command=date '+%a %m-%d-%y %H:%M'
+command=date '+%a %d/%m/%y %H:%M'
 interval=5
 color=#50C878
