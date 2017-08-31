@@ -186,7 +186,9 @@ client.unfocused #073642 #073642 #93a1a1 #586e75
 client.urgent #d33682 #d33682 #fdf6e3 #dc322f
 
 # notifications
+
 exec --no-startup-id /usr/bin/dunst
+exec --no-startup-id redshift
 
 # no window title
 new_window pixel 2
