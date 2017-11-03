@@ -1,9 +1,12 @@
 separator_block_width=14
 
+[spotify]
+command=/home/lpeschke/bin/spotisong
+interval=5
+color=#1DE9B6
+
 [battery]
-
 command=/usr/local/libexec/i3blocks/battery BAT0
-
 interval=5
 
 
@@ -14,8 +17,7 @@ interval=30
 color=#1793D1
 
 
-[wireless]
-instance=wlo1
+[network]
 command=/usr/local/libexec/i3blocks/iface
 color=#00dd00
 interval=10
