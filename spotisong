@@ -1,7 +1,9 @@
 #!/bin/bash
 
-TITLE=$(playerctl -p spotify metadata title)
-ARTIST=$(playerctl -p spotify metadata artist)
+PLAYER=${1:-'spotify'}
+
+TITLE=$(playerctl -p ${PLAYER} metadata title)
+ARTIST=$(playerctl -p ${PLAYER} metadata artist)
 
 if [ -z "${TITLE}" ] || [ -z "${ARTIST}" ] || [ "${TITLE}" == "(null)" ] || [ "${ARTIST}" == "(null)" ]; then
     echo
