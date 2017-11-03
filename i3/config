@@ -33,7 +33,7 @@ set $menu dmenu_run
     # start a terminal
     bindsym $mod+Return exec $term
 
-    bindsym $mod+l exec i3lock
+    bindsym $mod+l exec i3lock -i /home/lpeschke/Desktop/lock2.png
     # kill focused window
     bindsym $mod+Shift+q kill
 
@@ -76,9 +76,6 @@ set $menu dmenu_run
 #
 # Workspaces:
 #
-    bindsym Control+$alt+$left workspace prev
-    bindsym Control+$alt+$right workspace next
-
     # switch to workspace
     bindsym $mod+1 workspace 1
     bindsym $mod+2 workspace 2
@@ -122,7 +119,7 @@ set $menu dmenu_run
 
     # Toggle the current focus between tiling and floating mode
     bindsym $mod+Shift+space floating toggle
- 
+
     # Swap focus between the tiling area and the floating area
     bindsym $mod+space focus mode_toggle
 
@@ -180,17 +177,27 @@ bar {
 }
 
 # solarized color theme
-client.focused #7c4720 #7c4720 #fdf6e3 #7c4720
+# client.focused #a9b52b #a9b52b #fdf6e3 #a9b52b
+client.focused #a9b52b #a9b52b #000000 #a9b52b
 client.focused_inactive #073642 #073642 #eee8d5 #6c71c4
 client.unfocused #073642 #073642 #93a1a1 #586e75
 client.urgent #d33682 #d33682 #fdf6e3 #dc322f
 
-# notifications
+# notifications and network
 
 exec --no-startup-id /usr/bin/dunst
 exec --no-startup-id redshift
+exec --no-startup-id nm-applet
+
+# spotify
+bindsym Control+Shift+$alt+$left exec "playerctl -p spotify previous"
+bindsym Control+Shift+$alt+$right exec "playerctl -p spotify next"
+bindsym Control+Shift+$alt+space exec "playerctl -p spotify play-pause"
 
 # no window title
 new_window pixel 2
 hide_edge_borders smart
-hide_edge_borders vertical
+
+# Keyboard layout
+
+exec "setxkbmap us altgr-intl"
