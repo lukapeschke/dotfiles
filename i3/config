@@ -25,7 +25,9 @@ set $menu dmenu_run
 
 # new_window none
 
-
+gaps inner 4
+gaps outer -4
+smart_gaps on
 ### Key bindings
 #
 # Basics:
