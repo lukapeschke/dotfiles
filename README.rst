@@ -20,6 +20,6 @@ This is a simple i3gaps_ + i3blocks_ config. No Polybar / Xmonad etc..., I'm
 planning to move on to sway_ once it is considered stable, and this config
 should be fully compatible.
 
-.. _i3gaps:: https://github.com/Airblader/i3
-.. _i3blocks:: https://github.com/vivien/i3blocks
-.. _sway:: https://github.com/swaywm/sway
+.. _i3gaps: https://github.com/Airblader/i3
+.. _i3blocks: https://github.com/vivien/i3blocks
+.. _sway: https://github.com/swaywm/sway
