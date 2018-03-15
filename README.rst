@@ -7,15 +7,19 @@ My personal dotfiles and configs.
 Emacs
 =====
 
-I recommend this emacs configuration to first year Epitech students.
-
 Execute this command to install my emacs configuration:
 
 ``wget -O - https://raw.githubusercontent.com/lukapeschke/dotfiles/master/emacs/install.sh | bash``
 
 If the colors seem weird, set the `TERM` environment variable to `xterm-256color`
 
-Awesome WM
-==========
+i3
+==
 
-This Awesome WM configuration is a tweak of @meriadecs work: https://github.com/meriadec/awesome-sombra
+This is a simple i3gaps_ + i3blocks_ config. No Polybar / Xmonad etc..., I'm
+planning to move on to sway_ once it is considered stable, and this config
+should be fully compatible.
+
+.. _i3gaps:: https://github.com/Airblader/i3
+.. _i3blocks:: https://github.com/vivien/i3blocks
+.. _sway:: https://github.com/swaywm/sway
