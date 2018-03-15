@@ -23,8 +23,10 @@ set $term lxterminal
 # Your preferred application launcher
 set $menu dmenu_run
 
-# new_window none
 
+font pango:Droid Sans Mono 9
+
+# i3-gaps
 gaps inner 4
 gaps outer -4
 smart_gaps on
@@ -35,7 +37,7 @@ smart_gaps on
     # start a terminal
     bindsym $mod+Return exec $term
 
-    bindsym $mod+l exec i3lock -i /home/lpeschke/Desktop/lock2.png
+    bindsym $mod+l exec i3lock -i /home/lpeschke/Desktop/lock.png
     # kill focused window
     bindsym $mod+Shift+q kill
 
@@ -185,11 +187,12 @@ bar {
 # solarized color theme
 #
 
-# notifications and network
+# notifications, network, wallpaper
 
 exec --no-startup-id /usr/bin/dunst
 exec --no-startup-id redshift
 exec --no-startup-id nm-applet
+exec "nitrogen --set-zoom-fill Desktop/wallpaper.png"
 
 # spotify
 bindsym Control+Shift+$alt+$left exec "playerctl -p spotify previous"
