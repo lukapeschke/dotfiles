@@ -79,3 +79,6 @@
     (local-set-key (kbd "C-c <up>")    'hs-hide-all)
     (local-set-key (kbd "C-c <down>")  'hs-show-all)
     (hs-minor-mode t)))
+
+;; remove all trailing whitespaces when saving
+(add-hook 'before-save-hook 'whitespace-cleanup)
