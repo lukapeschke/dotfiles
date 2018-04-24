@@ -35,6 +35,10 @@
 ;; Highlight matching (), {}, and []
 (show-paren-mode 1)
 
+(require 'highlight-indentation)
+(set-face-background 'highlight-indentation-face "#333333")
+;; (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
+(add-hook 'python-mode-hook 'highlight-indentation-mode)
 
 ;; Autocompletion
 (require 'auto-complete)
