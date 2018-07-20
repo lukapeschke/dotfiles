@@ -1,8 +1,19 @@
+
 (add-to-list 'load-path "~/.emacs.d/lisp")
 
 ;; nice color theme, please export TERM=xterm-256color
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (load-theme 'tangotango t)
+
+# Set rst titles color
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(rst-level-1 ((t (:background "color-239"))))
+ '(rst-level-2 ((t (:background "color-239"))))
+ '(rst-level-3 ((t (:background "color-239")))))
 
 ;; keep the original background color, ie. transparent terminal
 (defun on-after-init ()
@@ -10,7 +21,7 @@
     (set-face-background 'default "unspecified-bg" (selected-frame))))
 (add-hook 'window-setup-hook 'on-after-init)
 
-;; Asciidoc, yaml, Dockerfile, jinja2 and .rst support
+;; Asciidoc, yaml, Dockerfile, jinja2, golang and .rst support
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 (require 'dockerfile-mode)
@@ -18,11 +29,13 @@
 (require 'adoc-mode)
 (add-to-list 'auto-mode-alist '("\\.adoc\\'" . adoc-mode))
 (require 'rst)
-(add-to-list 'auto-mode-alist '("\\.rst\\'" . rst))
+(add-to-list 'auto-mode-alist '("\\.rst\\'" . rst-mode))
 (require 'jinja2-mode)
 (add-to-list 'auto-mode-alist '("\\.j2\\'" . jinja2-mode))
 (require 'go-mode-autoloads)
 (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
+(require 'rust-mode)
+(add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
 
 ;; matching {} [] () in the same color
 (require 'rainbow-delimiters)
@@ -54,7 +67,7 @@
 (load "std_comment.el")
 
 ;; Uncomment this lines to get a spaces-only indentation
-;; (setq-default indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
 
 ;; Make characters after column 80 purple and trailing spaces red
 ;; This also show tabulations, delete 'tab-mark' from the lines below to
@@ -62,7 +75,7 @@
 
 (require 'whitespace)
 (setq whitespace-style
-      (quote (face trailing tab-mark lines-tail)))
+      (quote (face trailing lines-tail)))
 (add-hook 'find-file-hook 'whitespace-mode)
 
 ;; scroll only one line at once
@@ -86,3 +99,6 @@
 
 ;; remove all trailing whitespaces when saving
 (add-hook 'before-save-hook 'whitespace-cleanup)
+
+;; set JSON and JavaScript indentation to 2
+(setq js-indent-level 2)
