@@ -192,7 +192,7 @@ bar {
 exec --no-startup-id /usr/bin/dunst
 exec --no-startup-id redshift
 exec --no-startup-id nm-applet
-exec "nitrogen --set-zoom-fill Desktop/wallpaper.png"
+exec "nitrogen --set-tiled Desktop/wallpaper.png"
 
 # spotify
 bindsym Control+Shift+$alt+$left exec "playerctl -p spotify previous"
