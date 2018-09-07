@@ -20,3 +20,6 @@ if [ -f ~/.emacs ]; then
 fi
 
 cp DOTemacs ~/.emacs
+
+cd /tmp
+rm -rf dotfiles/
