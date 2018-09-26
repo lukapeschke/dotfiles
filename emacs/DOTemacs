@@ -102,3 +102,12 @@
 
 ;; set JSON and JavaScript indentation to 2
 (setq js-indent-level 2)
+
+(require 'drag-stuff)
+
+;; keybindings to toggle functions, use CTRL and arrow keys
+(add-hook 'prog-mode-hook
+  (lambda()
+    (local-set-key (kbd "<M-up>")    'drag-stuff-up)
+    (local-set-key (kbd "<M-down>")  'drag-stuff-down)
+    (hs-minor-mode t)))
