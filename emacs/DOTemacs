@@ -1,11 +1,16 @@
 
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (add-to-list 'load-path "~/.emacs.d/lisp")
 
 ;; nice color theme, please export TERM=xterm-256color
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (load-theme 'tangotango t)
 
-;; Set rst titles color
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -36,6 +41,8 @@
 (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
 (require 'rust-mode)
 (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
+(require 'terraform-mode)
+(add-to-list 'auto-mode-alist '("\\.tf\\'" . terraform-mode))
 
 ;; matching {} [] () in the same color
 (require 'rainbow-delimiters)
@@ -108,3 +115,30 @@
 ;; keybindings to toggle functions, use CTRL and arrow keys
 (global-set-key (kbd "<M-up>")    'drag-stuff-up)
 (global-set-key (kbd "<M-down>")  'drag-stuff-down)
+(global-set-key (kbd "<M-left>")  'drag-stuff-left)
+(global-set-key (kbd "<M-right>")  'drag-stuff-right)
+
+
+;; python highlighting with pylint
+;; Configure flymake for Python
+(when (load "flymake" t)
+  (defun flymake-pylint-init ()
+    (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                       'flymake-create-temp-inplace))
+           (local-file (file-relative-name
+                        temp-file
+                        (file-name-directory buffer-file-name))))
+      (list "epylint" (list local-file))))
+  (add-to-list 'flymake-allowed-file-name-masks
+               '("\\.py\\'" flymake-pylint-init)))
+;; Set as a minor mode for Python
+(add-hook 'python-mode-hook '(lambda () (flymake-mode)))
+;; Display pylint errors in the buffer instead of requiring "C-h ."
+(eval-after-load 'flymake '(require 'flymake-cursor))
+;; Set delay before displaying erros to 0.1 seconds instead of 0.9
+(setq flymake-cursor-error-display-delay 0.1)
+;; Configure to wait a bit less after edits before starting
+(setq-default flymake-no-changes-timeout '1)
+;; Keymaps to navigate to the errors
+(add-hook 'python-mode-hook '(lambda () (define-key python-mode-map "\C-cn" 'flymake-goto-next-error)))
+(add-hook 'python-mode-hook '(lambda () (define-key python-mode-map "\C-cp" 'flymake-goto-prev-error)))
