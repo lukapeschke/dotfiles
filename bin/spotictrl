@@ -1,0 +1,11 @@
+#!/bin/bash -x
+
+PLAYERS=("spotify" "vlc")
+
+ACTION=$1
+
+for player in ${PLAYERS[@]}; do
+
+    playerctl -p $player $ACTION && break
+
+done

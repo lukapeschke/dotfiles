@@ -26,7 +26,6 @@ set $menu rofi -show run
 
 font pango:Droid Sans Mono 9
 
-# i3-gaps
 # gaps inner 4
 # gaps outer -4
 # smart_gaps on
@@ -37,7 +36,7 @@ font pango:Droid Sans Mono 9
     # start a terminal
     bindsym $mod+Return exec $term
 
-    bindsym $mod+l exec i3lock -i /home/lpeschke/Desktop/lock.png
+    bindsym $mod+l exec i3lock -i /home/lpeschke/Desktop/wallpaper3.jpg
     # kill focused window
     bindsym $mod+Shift+q kill
 
@@ -155,10 +154,10 @@ mode "resize" {
     bindsym $right resize grow width 10 px or 10 ppt
 
     # ditto, with arrow keys
-    bindsym Left resize shrink width 10 px or 10 ppt
-    bindsym Down resize grow height 10 px or 10 ppt
-    bindsym Up resize shrink height 10 px or 10 ppt
-    bindsym Right resize grow width 10 px or 10 ppt
+    # bindsym Left resize shrink width 10 px or 10 ppt
+    # bindsym Down resize grow height 10 px or 10 ppt
+    # bindsym Up resize shrink height 10 px or 10 ppt
+    # bindsym Right resize grow width 10 px or 10 ppt
 
     # return to default mode
     bindsym Return mode "default"
@@ -171,7 +170,8 @@ bindsym $mod+r mode "resize"
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-  status_command i3blocks
+font pango:Droid Sans Mono bold 9
+status_command i3blocks
     position top
   colors {
     separator #928374
@@ -192,22 +192,24 @@ bar {
 exec --no-startup-id /usr/bin/dunst
 exec --no-startup-id redshift
 exec --no-startup-id nm-applet
-exec "nitrogen --set-tiled Desktop/wallpaper.png"
+exec kdeconnect-indicator
+exec "nitrogen --set-tiled Desktop/wallpaper3.jpg"
 
 # spotify
-bindsym Control+Shift+$alt+$left exec "playerctl -p spotify previous"
-bindsym Control+Shift+$alt+$right exec "playerctl -p spotify next"
-bindsym Control+Shift+$alt+space exec "playerctl -p spotify play-pause"
+bindsym Control+Shift+$alt+$left exec "spotictrl previous"
+bindsym Control+Shift+$alt+$right exec "spotictrl next"
+bindsym Control+Shift+$alt+space exec "spotictrl play-pause"
 
 # no window title
-new_window pixel 2
+# new_window pixel 2
+default_border pixel 2
 hide_edge_borders smart
 
 # Keyboard layout
 
 exec "setxkbmap us altgr-intl"
 
-client.focused #689d6a #689d6a #282828 #282828
-client.focused_inactive #1d2021 #1d2021 #928374 #282828
-client.unfocused #32302f #32302f #928374 #282828
-client.urgent #cc241d #cc241d #ebdbb2 #282828
+client.focused #689d6a #689d6a #282828 #282828 #689d6a
+client.focused_inactive #1d2021 #1d2021 #928374 #282828 #282828
+client.unfocused #32302f #32302f #928374 #282828 #282828
+client.urgent #cc241d #cc241d #ebdbb2 #282828 #282828

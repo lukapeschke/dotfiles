@@ -1,13 +1,27 @@
 #!/bin/bash
 
+
+function check_output () {
+    if [ -z "${TITLE}" ] || [ -z "${ARTIST}" ] || [ "${TITLE}" == "(null)" ] || [ "${ARTIST}" == "(null)" ]; then
+        return 1
+    fi
+}
+
 PLAYER=${1:-'spotify'}
+PLAYER2=${2:-'vlc'}
 
 TITLE=$(playerctl -p ${PLAYER} metadata title)
 ARTIST=$(playerctl -p ${PLAYER} metadata artist)
 
-if [ -z "${TITLE}" ] || [ -z "${ARTIST}" ] || [ "${TITLE}" == "(null)" ] || [ "${ARTIST}" == "(null)" ]; then
-    echo
-    exit 0
-fi
 
-echo ${TITLE} '|' ${ARTIST}
+if check_output; then
+    echo ${TITLE} '|' ${ARTIST}
+else
+    TITLE=$(playerctl -p ${PLAYER2} metadata title)
+    ARTIST=$(playerctl -p ${PLAYER2} metadata artist)
+    if check_output; then
+        echo ${TITLE} '|' ${ARTIST}
+    else
+        echo
+    fi
+fi

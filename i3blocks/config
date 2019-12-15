@@ -1,37 +1,36 @@
-separator_block_width=14
+separator=false
+separator_block_width=10
 
 [spotify]
 command=/home/lpeschke/bin/spotisong
 interval=5
-color=#1DE9B6
+color=#ba68c8
 
 [battery]
 command=/usr/local/libexec/i3blocks/battery BAT0
 interval=5
-
+color=#589df6
 
 [disk-root]
 label=
 command=/usr/local/libexec/i3blocks/disk /
 interval=30
-color=#1793D1
-
+color=#21b089
 
 [network]
 command=/usr/local/libexec/i3blocks/iface
-color=#00dd00
 interval=10
+color=#be97c6
 
 [volume]
-label=vol
+label=vol 
 command=/usr/local/libexec/i3blocks/volume
 interval=2
 signal=10
-color=#ffa500
-
+color=#E88939
 
 [time]
 label=
 command=date '+%a %d/%m/%y %H:%M'
 interval=5
-color=#50C878
+color=#06D6A0
