@@ -196,9 +196,9 @@ exec kdeconnect-indicator
 exec "nitrogen --set-tiled Desktop/wallpaper3.jpg"
 
 # spotify
-bindsym Control+Shift+$alt+$left exec "spotictrl previous"
-bindsym Control+Shift+$alt+$right exec "spotictrl next"
-bindsym Control+Shift+$alt+space exec "spotictrl play-pause"
+bindsym Control+Shift+$alt+$left exec "playerctl previous"
+bindsym Control+Shift+$alt+$right exec "playerctl next"
+bindsym Control+Shift+$alt+space exec "playerctl play-pause"
 
 # no window title
 # new_window pixel 2
