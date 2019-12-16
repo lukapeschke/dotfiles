@@ -7,24 +7,24 @@ interval=5
 color=#ba68c8
 
 [battery]
-command=/usr/local/libexec/i3blocks/battery BAT0
+command=/home/lpeschke/bin/i3blocks-bin/battery BAT0
 interval=5
 color=#589df6
 
 [disk-root]
 label=
-command=/usr/local/libexec/i3blocks/disk /
+command=/home/lpeschke/bin/i3blocks-bin/disk /
 interval=30
 color=#21b089
 
 [network]
-command=/usr/local/libexec/i3blocks/iface
+command=/home/lpeschke/bin/i3blocks-bin/iface
 interval=10
 color=#be97c6
 
 [volume]
 label=vol 
-command=/usr/local/libexec/i3blocks/volume
+command=/home/lpeschke/bin/i3blocks-bin/volume
 interval=2
 signal=10
 color=#E88939
