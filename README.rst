@@ -2,16 +2,20 @@
 dotfiles
 ========
 
-My personal dotfiles and configs.
+My personal dotfiles and configs. This repo will deserve a cleanup at
+some point.
 
-i3
-==
+Im using sway_ . Images are from unsplash_
 
-This is a simple i3 / i3gaps_ + i3blocks_ config. No Polybar / Xmonad etc...,
-I'm planning to move on to sway_ at some point, and
-this config should be fully compatible.
+.. note:: For emacs, see my `emacs config`_
 
+.. _sway: https://github.com/swaywm/sway/
+.. _unsplash: https://unsplash.com/
+.. _emacs config: https://github.com/lukapeschke/emacs-config
 
-.. _i3gaps: https://github.com/Airblader/i3
-.. _i3blocks: https://github.com/vivien/i3blocks
-.. _sway: https://github.com/swaywm/sway
+Installing
+==========
+
+I should soon(tm) be possible to just ``git clone`` this into ``~/.config``.
+For now, manually copy every directory you're interested in to
+``~/config/<subdir-x>``.
