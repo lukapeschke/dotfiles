@@ -230,6 +230,9 @@ input type:keyboard {
 }
 
 # dismiss mako notifications
-bindsym Control+space exec makoctl dismiss -a
+bindsym Control+space exec makoctl dismiss
+bindsym Control+Shift+space exec makoctl dismiss -a
+# grave == backtick
+bindsym Control+grave exec makoctl restore
 
 output "*" bg /home/lpeschke/Desktop/wallpaper-sway.jpg stretch
