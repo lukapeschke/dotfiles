@@ -1,0 +1,16 @@
+add_newline = false
+
+[aws]
+disabled = true
+
+[cmd_duration]
+min_time = 1500
+
+[kubernetes]
+disabled = true
+
+[custom.k8s]
+command = "print_k8s_prompt"
+when = "true"
+symbol = "☸ "
+style = "bold blue"
