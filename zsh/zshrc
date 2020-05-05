@@ -33,6 +33,12 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}       # colorz !
 zstyle ':completion:*::::' completer _expand _complete _ignored _approximate # list of completers to use
 
 
+# K8S completion
+source <(kubectl completion zsh)
+
+zstyle ':completion:*:*:git:*:ga:*' script ~/.zsh/git-completion.zsh
+fpath=(~/.zsh $fpath)
+
 # History
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -69,15 +75,15 @@ alias gd='git diff'
 alias 'gcn!'='git commit -v --no-edit --amend'
 alias gcsm='git commit -s -m'
 alias gco='git checkout'
+alias glog='git log --oneline --decorate --graph'
+alias gloga='git log --oneline --decorate --graph --all'
+
+source ~/.alias
 
 source /usr/share/fzf/shell/key-bindings.zsh
 export PATH=/home/lpeschke/.local/bin:/home/lpeschke/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/lpeschke/bin:/home/lpeschke/go/bin:~/.devops-snippets:$HOME/.cargo/bin
 
 export EDITOR=emacs
-
-
-
-source <(kubectl completion zsh)
-
+export STARSHIP_CONFIG=~/.config/starship/starship.toml
 
 eval $(starship init zsh)
