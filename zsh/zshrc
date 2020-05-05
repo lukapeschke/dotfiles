@@ -10,6 +10,9 @@ bindkey '\e[6~'   history-search-forward  # PgDn
 bindkey '^[[H'    beginning-of-line       # Home
 bindkey '^[[F'    end-of-line             # End
 
+# make ctrl+w stop at non alphanumeric chars
+autoload -U select-word-style
+select-word-style bash
 
 # Completion
 autoload -U compinit
