@@ -1,0 +1,80 @@
+autoload -U colors zsh-mime-setup select-word-style
+
+bindkey -e                                # emacs keybindings
+bindkey '\e[1;5C' forward-word            # C-Right
+bindkey '\e[1;5D' backward-word           # C-Left
+bindkey '\e[2~'   overwrite-mode          # Insert
+bindkey '\e[3~'   delete-char             # Del
+bindkey '\e[5~'   history-search-backward # PgUp
+bindkey '\e[6~'   history-search-forward  # PgDn
+bindkey '^[[H'    beginning-of-line       # Home
+bindkey '^[[F'    end-of-line             # End
+
+
+# Completion
+autoload -U compinit
+compinit
+zmodload -i zsh/complist
+setopt hash_list_all            # hash everything before completion
+setopt completealiases          # complete alisases
+setopt always_to_end            # when completing from the middle of a word, move the cursor to the end of the word
+setopt complete_in_word         # allow completion from within a word/phrase
+setopt correct                  # spelling correction for commands
+setopt list_ambiguous           # complete as much of a completion until it gets ambiguous.
+
+zstyle ':completion::complete:*' use-cache on               # completion caching, use rehash to clear
+zstyle ':completion:*' cache-path ~/.zsh/cache              # cache path
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'   # ignore case
+zstyle ':completion:*' menu select=2                        # menu if nb items > 2
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}       # colorz !
+zstyle ':completion:*::::' completer _expand _complete _ignored _approximate # list of completers to use
+
+
+# History
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt append_history           # append
+setopt hist_ignore_all_dups     # no duplicate
+unsetopt hist_ignore_space      # ignore space prefixed commands
+setopt hist_reduce_blanks       # trim blanks
+setopt hist_verify              # show before executing history commands
+setopt inc_append_history       # add commands as they are typed, don't wait until shell exit
+setopt share_history            # share hist between sessions
+
+# Various
+unsetopt beep                   # no bell on error
+unsetopt bg_nice                # no lower prio for background jobs
+unsetopt clobber                # must use >| to truncate existing files
+unsetopt hist_beep              # no bell on error in history
+unsetopt hup                    # no hup signal at shell exit
+unsetopt ignore_eof             # do not exit on end-of-file
+unsetopt list_beep              # no bell on ambiguous completion
+unsetopt rm_star_silent         # ask for confirmation for `rm *' or `rm path/*'
+
+
+
+# Aliases
+
+alias ne='emacsclient -t'
+alias c='find . -name \*~ -delete; find . -name \*.pyc -delete; find . -name __pycache__ -delete'
+
+# Git
+alias gst='git status'
+alias ga='git add'
+alias gd='git diff'
+alias 'gcn!'='git commit -v --no-edit --amend'
+alias gcsm='git commit -s -m'
+alias gco='git checkout'
+
+source /usr/share/fzf/shell/key-bindings.zsh
+export PATH=/home/lpeschke/.local/bin:/home/lpeschke/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/lpeschke/bin:/home/lpeschke/go/bin:~/.devops-snippets:$HOME/.cargo/bin
+
+export EDITOR=emacs
+
+
+
+source <(kubectl completion zsh)
+
+
+eval $(starship init zsh)
