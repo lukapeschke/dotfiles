@@ -67,7 +67,13 @@ unsetopt rm_star_silent         # ask for confirmation for `rm *' or `rm path/*'
 alias ne='emacsclient -t'
 alias c='find . -name \*~ -delete; find . -name \*.pyc -delete; find . -name __pycache__ -delete'
 
-# Git
+## K8S
+alias k='kubectl'
+alias kg='kubectl get'
+alias kl='kubectl logs'
+alias klf='kubectl logs -f'
+
+## Git
 alias gst='git status'
 alias ga='git add'
 alias gd='git diff'
