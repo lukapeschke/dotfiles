@@ -76,12 +76,14 @@ alias klf='kubectl logs -f'
 ## Git
 alias gst='git status'
 alias ga='git add'
-alias gd='git diff'
+alias gd='git diff --no-prefix'
+alias gs='git show --no-prefix'
 alias 'gcn!'='git commit -v --no-edit --amend'
 alias gcsm='git commit -s -m'
 alias gco='git checkout'
 alias glog='git log --oneline --decorate --graph'
 alias gloga='git log --oneline --decorate --graph --all'
+alias 'git-cleanup-branches'='git branch -d $(git branch --merged master | grep -v master)'
 
 source ~/.alias
 
