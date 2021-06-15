@@ -4,6 +4,9 @@ disabled = true
 [cmd_duration]
 min_time = 1500
 
+[scala]
+symbol = " "
+
 [custom.k8s]
 command = "print_k8s_prompt"
 when = "true"
