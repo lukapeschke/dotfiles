@@ -5,7 +5,7 @@ print_k8s_prompt() {
     if [ "$KUBEON" = "true" ]; then
         ctx=$(kubectl config current-context)
         ns=$(kubectl config view --minify --output 'jsonpath={..namespace}')
-        prompt="$ctx($ns)"
+        prompt="☸ $ctx($ns)"
     fi
     echo -n $prompt
 }
