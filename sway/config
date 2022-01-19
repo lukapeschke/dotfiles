@@ -44,13 +44,13 @@ font pango:Droid Sans Mono 9
     bindsym $mod+d exec $menu
 
     # Sound
-    bindsym XF86AudioLowerVolume exec amixer sset Master 5%-
-    bindsym XF86AudioRaiseVolume exec amixer sset Master 5%+
-    bindsym XF86AudioMute exec amixer sset Master toggle
+    bindsym XF86AudioLowerVolume exec brt volume_down
+    bindsym XF86AudioRaiseVolume exec brt volume_up
+    bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
 
     # Brightness
-    bindsym XF86MonBrightnessUp exec brightnessctl s 5%+
-    bindsym XF86MonBrightnessDown exec brightnessctl s 5%-
+    bindsym XF86MonBrightnessUp exec brt brightness_up
+    bindsym XF86MonBrightnessDown exec brt brightness_down
 
     # reload the configuration file
     bindsym $mod+Shift+c reload
@@ -190,7 +190,7 @@ bar {
 # notifications, network, wallpaper
 
 exec --no-startup-id mako
-exec --no-startup-id nm-applet
+exec --no-startup-id nm-applet --indicator
 exec kdeconnect-indicator
 
 # spotify
@@ -236,3 +236,4 @@ bindsym Control+Shift+space exec makoctl dismiss -a
 bindsym Control+grave exec makoctl restore
 
 output "*" bg /home/lpeschke/Desktop/wallpaper-sway.jpg stretch
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
