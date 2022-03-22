@@ -218,7 +218,7 @@ workspace 7 output DP-2 HDMI-A-1 eDP-1
 workspace 8 output DP-2 HDMI-A-1 eDP-1
 workspace 9 output DP-2 HDMI-A-1 eDP-1
 
-output eDP-1 pos 0,0
+output eDP-1 pos 0 0 scale 1.75
 output HDMI-A-1 pos 1920,0
 output DP-2 pos 4480,0
 
@@ -227,6 +227,10 @@ input type:keyboard {
     xkb_layout us
     xkb_variant altgr-intl
     # xkb_options grp:alt_shift_toggle
+}
+
+input type:touchpad {
+    tap enabled
 }
 
 # dismiss mako notifications
