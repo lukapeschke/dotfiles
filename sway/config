@@ -24,7 +24,7 @@ set $term alacritty
 set $menu wofi
 
 
-font pango:Droid Sans Mono 9
+font pango:FuraMono Nerd Font Mono 8
 
 # gaps inner 4
 # gaps outer -4
@@ -170,7 +170,6 @@ bindsym $mod+r mode "resize"
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    font pango:Droid Sans Mono bold 9
     swaybar_command waybar
     position top
   colors {
