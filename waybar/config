@@ -150,7 +150,7 @@
     // "return-type": "json",
     "max-length": 60,
     "interval": 2, // Remove this if your script is endless and write in loop
-    "exec": "playerctl metadata --format \"{{ title }} | {{ artist }}\"", // Script in resources/custom_modules folder
+    "exec": "playerctl -p spotify metadata --format \"{{ title }} | {{ artist }}\"", // Script in resources/custom_modules folder
     "exec-if": "pgrep spotify"
   }
 }
