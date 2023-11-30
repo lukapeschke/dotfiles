@@ -1,0 +1,5 @@
+@theme "/usr/share/rofi/themes/Arc-Dark.rasi"
+
+configuration {
+  font: "FuraMono Nerd Font Mono 14";
+}
