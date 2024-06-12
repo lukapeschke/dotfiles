@@ -1,0 +1,23 @@
+[process]
+command = "wob"
+args = []
+
+[[commands]]
+name = "volume_up"
+command = "/home/lpeschke/bin/volume_mgmt"
+args = ["+5%"]
+
+[[commands]]
+name = "volume_down"
+command = "/home/lpeschke/bin/volume_mgmt"
+args = ["-5%"]
+
+[[commands]]
+name = "brightness_down"
+command = "brightnessctl"
+args = ["s", "5%-"]
+
+[[commands]]
+name = "brightness_up"
+command = "brightnessctl"
+args = ["s", "5%+"]
