@@ -1,0 +1,61 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-x ctrl-f": "file_finder::Toggle",
+      "alt-left": ["workspace::ActivatePaneInDirection", "Left"],
+      "alt-right": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-alt-up": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-alt-down": ["workspace::ActivatePaneInDirection", "Down"]
+      // "shift shift": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-g": "editor::Cancel",
+      "ctrl-x ctrl-c": "pane::CloseActiveItem",
+      "ctrl-x b": "tab_switcher::Toggle",
+      "ctrl-x ctrl-s": "workspace::Save",
+      "ctrl-/": "editor::Undo",
+      "ctrl-w": "editor::Cut",
+      "ctrl-y": "editor::Paste",
+      "ctrl-k": "editor::CutToEndOfLine",
+      "ctrl-s": "buffer_search::Deploy",
+      "alt-;": "editor::ToggleComments",
+      "alt-.": "editor::GoToDefinition",
+      "alt-,": "pane::GoBack",
+      "ctrl-x ctrl-a": "editor::ToggleCodeActions",
+      "alt-g alt-g": "go_to_line::Toggle"
+    }
+  },
+  // Pane navigation
+  {
+    "context": "Pane",
+    "bindings": {
+      "ctrl-shift-n": "pane::SplitRight",
+      "ctrl-x left": "pane::ActivatePrevItem",
+      "ctrl-x right": "pane::ActivateNextItem"
+    }
+  },
+  // search
+  {
+    "context": "BufferSearchBar > Editor",
+    "bindings": {
+      "enter": "buffer_search::Dismiss",
+      "ctrl-g": "buffer_search::Dismiss",
+      "down": "search::SelectNextMatch",
+      "up": "search::SelectPrevMatch",
+      "ctrl-r": "search::SelectPrevMatch",
+      "ctrl-p": "search::SelectPrevMatch",
+      "alt-5": "search::ToggleReplace"
+    }
+  }
+]
