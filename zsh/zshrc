@@ -34,7 +34,7 @@ zstyle ':completion:*::::' completer _expand _complete _ignored _approximate # l
 
 
 # K8S completion
-source <(kubectl completion zsh)
+# source <(kubectl completion zsh)
 
 # History
 HISTFILE=~/.zsh_history
@@ -62,7 +62,7 @@ unsetopt rm_star_silent         # ask for confirmation for `rm *' or `rm path/*'
 
 # Aliases
 
-alias ne='emacsclient -t'
+alias ne='emacs-nox'
 alias c='find . -name \*~ -delete; find . -name \*.pyc -delete; find . -name __pycache__ -delete'
 
 ## K8S
@@ -88,13 +88,11 @@ source ~/.alias
 source /usr/share/fzf/shell/key-bindings.zsh
 export PATH=/home/lpeschke/.local/bin:/home/lpeschke/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/lpeschke/bin:/home/lpeschke/go/bin:~/.devops-snippets:$HOME/.cargo/bin:$HOME/.pyenv/bin:$HOME/.yarn/bin
 
-export EDITOR=emacs
+export EDITOR=emacs-nox
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 
 # FIXME: Should use PAM instead
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
-
-eval $(starship init zsh)
 
 if type "direnv" > /dev/null; then eval "$(direnv hook zsh)"; fi
 if type "pyenv" > /dev/null; then
@@ -106,3 +104,20 @@ if type "zoxide" > /dev/null; then eval "$(zoxide init zsh)"; fi
 export DENO_INSTALL="/home/lpeschke/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export RIPGREP_CONFIG_PATH=~/.config/ripgrep/config
+eval "$(starship init zsh)"
+
+# bun completions
+[ -s "/home/lpeschke/.bun/_bun" ] && source "/home/lpeschke/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+. "$HOME/.cargo/env"
+
+alias claude="/home/lpeschke/.claude/local/claude"
