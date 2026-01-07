@@ -7,6 +7,14 @@
 // custom settings, run `zed: open default settings` from the
 // command palette
 {
+  "show_whitespaces": "trailing",
+  "colorize_brackets": true,
+  "auto_update_extensions": {
+    "groovy": false,
+  },
+  "features": {
+    "edit_prediction_provider": "zed",
+  },
   "telemetry": { "diagnostics": false, "metrics": false },
   "ui_font_size": 14,
   "ui_font_family": "FiraCode Nerd Font",
@@ -27,61 +35,88 @@
     "**/.mypy_cache",
     "**/.pytest_cache",
     "**/.ruff_cache",
-    "**/__pycache__"
+    "**/__pycache__",
   ],
   "theme": {
     "mode": "system",
     "light": "Catppuccin Mocha - No Italics",
-    "dark": "One Dark"
+    "dark": "One Dark",
   },
   "inlay_hints": { "enabled": true },
   "gutter": { "line_numbers": true },
   "file_types": {
-    "YAML": ["yml", "yaml", "*.yml.dist"]
+    "YAML": ["yml", "yaml", "*.yml.dist"],
+    "JSONC": ["json5"],
   },
   "auto_install_extensions": {
     "catppuccin": true,
     "dockerfile": true,
     "graphql": true,
+    "groovy": true,
     "html": true,
-    "ruff": true,
+    "makefile": true,
+    // "ruff": true,
     "toml": true,
-    "vue": true
+    "vue": true,
   },
   "languages": {
     "Python": {
-      "language_servers": ["pyright", "ruff"],
+      "language_servers": ["basedpyright", "ty", "ruff"],
       "preferred_line_length": 100,
       "indent_guides": {
         "enabled": true,
-        "coloring": "indent_aware"
+        "coloring": "indent_aware",
       },
       "format_on_save": "on",
       "formatter": [
-        {
-          "code_actions": {
-            "source.organizeImports.ruff": true,
-            "source.fixAll.ruff": true
-          }
-        },
+        { "code_action": "source.organizeImports.ruff" },
+        { "code_action": "source.fixAll.ruff" },
         {
           "language_server": {
-            "name": "ruff"
-          }
-        }
-      ]
+            "name": "ruff",
+          },
+        },
+      ],
     },
     "GraphQL": { "format_on_save": "off" },
     "YAML": {
       "format_on_save": "off",
       "indent_guides": {
         "enabled": true,
-        "coloring": "indent_aware"
-      }
+        "coloring": "indent_aware",
+      },
     },
     "Rust": {
       "format_on_save": "on",
-      "preferred_line_length": 100
-    }
-  }
+      "preferred_line_length": 100,
+    },
+    "Markdown": {
+      "preferred_line_length": 120,
+    },
+  },
+  "language_models": {
+    "openai": {
+      "api_url": "https://api.scaleway.ai/4d19a502-1de1-4b7f-aa2d-e9a72314d12c/v1",
+      "available_models": [
+        {
+          "name": "qwen3-coder-30b-a3b-instruct",
+          "display_name": "Qwen3 Coder - Scaleway",
+          "max_tokens": 128000,
+        },
+        {
+          "name": "qwen3-235b-a22b-instruct-2507",
+          "display_name": "Qwen3 235b a22b instruct bla bla - Scaleway",
+          "max_tokens": 250000,
+        },
+      ],
+    },
+  },
+  "agent": {
+    "always_allow_tool_actions": false,
+    "default_profile": "write",
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4-5",
+    },
+  },
 }

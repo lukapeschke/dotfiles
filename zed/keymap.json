@@ -33,7 +33,9 @@
       "alt-.": "editor::GoToDefinition",
       "alt-,": "pane::GoBack",
       "ctrl-x ctrl-a": "editor::ToggleCodeActions",
-      "alt-g alt-g": "go_to_line::Toggle"
+      "alt-g alt-g": "go_to_line::Toggle",
+      "alt-q": "editor::Rewrap",
+      "ctrl-c ctrl-u": "editor::ConvertToLowerCamelCase"
     }
   },
   // Pane navigation
