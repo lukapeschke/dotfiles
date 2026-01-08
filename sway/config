@@ -26,7 +26,7 @@ set $term "kitty"
 set $menu swaymsg exec "PATH=$PATH:/home/lpeschke/bin rofi -show run"
 
 
-font pango:FiraCode Nerd Font Bold 9
+font pango:FiraCode Nerd Font Mono Bold 9
 
 # gaps inner 2
 # gaps outer -4
