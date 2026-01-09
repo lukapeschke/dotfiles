@@ -1,0 +1,3 @@
+#!/bin/sh
+
+signal-desktop --ozone-platform-hint=auto
