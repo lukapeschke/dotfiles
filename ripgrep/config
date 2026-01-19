@@ -9,4 +9,6 @@
 graphql:*.{graphql,gql}
 --type-add
 rs:*.rs
+--type-add
+prisma:*.prisma
 --smart-case
