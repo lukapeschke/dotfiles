@@ -23,7 +23,7 @@ set $right Right
 set $term "kitty"
 # Your preferred application launcher
 # set $menu swaymsg exec "PATH=$PATH:/home/lpeschke/bin $(tofi-run)"
-set $menu swaymsg exec "PATH=$PATH:/home/lpeschke/bin rofi -show run"
+set $menu swaymsg exec "PATH=$PATH:/home/lpeschke/bin:/home/lpeschke/.local/bin rofi -show run"
 
 
 font pango:FiraCode Nerd Font Mono Bold 9
@@ -46,8 +46,8 @@ font pango:FiraCode Nerd Font Mono Bold 9
     bindsym $mod+d exec $menu
 
     # Sound
-    bindsym XF86AudioLowerVolume exec brt volume_down
-    bindsym XF86AudioRaiseVolume exec brt volume_up
+    bindsym XF86AudioLowerVolume exec  exec /home/lpeschke/.cargo/bin/brt volume_down
+    bindsym XF86AudioRaiseVolume exec /home/lpeschke/.cargo/bin/brt volume_up
     bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
     # Brightness
@@ -242,4 +242,5 @@ bindsym Control+Shift+space exec makoctl dismiss -a
 bindsym Control+grave exec makoctl restore
 
 output "*" bg /home/lpeschke/Desktop/wallpaper-sway.jpg stretch
-exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+# exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway XDG_SESSION_TYPE=wayland
+exec sh -c 'dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway XDG_SESSION_TYPE=wayland && systemctl --user start sway-session.target'
